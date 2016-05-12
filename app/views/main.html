@@ -1,5 +1,9 @@
-
-<input ng-model="location"/>
-
+<div id="floating-panel">
+	<input id="address" type="textbox" ng-model="geoCode">
+	<input id="submit" type="button" ng-click="submit()" value="Submit">
+	<input id="submit" type="button" ng-click="heatMap()" value="Heat Map">
+	<input id="submit" type="button" ng-click="dataPoint()" value="Data Point">
+	<input id="submit" type="button" ng-click="refresh()" value="Refresh">
+</div>
 <div id="map">
 </div>
