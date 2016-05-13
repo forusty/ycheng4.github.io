@@ -11,13 +11,12 @@ angular.module('wheresmytaxiApp')
         var map = '';
         var heatmap = '';
         $scope.currentMode = '';
-
         testService.queryData()
             .success(function(response) {
                 console.log(response);
                 testService.setData(response);
                 $scope.currentMode = 'datapoint';
-
+                $scope.totalTaxiCount=testService.getData().features[0].geometry.coordinates.length;
                 var mapDiv = document.getElementById('map');
                 map = new google.maps.Map(mapDiv, {
                     center: {
@@ -26,12 +25,11 @@ angular.module('wheresmytaxiApp')
                     },
                     zoom: 11
                 });
-                // map.data.addGeoJson(response);
-                    // web service successCallback
-                    var ctaLayer = new google.maps.KmlLayer({
-                        url: 'abc.kml',
-                        map: map
-                    });
+                map.data.addGeoJson(response);
+                var ctaLayer = new google.maps.KmlLayer({
+                    url: 'https://www.dropbox.com/s/svszn361sq0cn5g/speed_camera_spf.kml?dl=1',
+                    map: map
+                });
             })
             .error(function(response, status) {
                 console.log(response);
@@ -93,6 +91,7 @@ angular.module('wheresmytaxiApp')
                     } else if ($scope.currentMode === 'datapoint') {
                         $scope.dataPoint();
                     }
+                    $scope.totalTaxiCount=testService.getData().features[0].geometry.coordinates.length;
                 })
                 .error(function(response, status) {
                     console.log(response);
