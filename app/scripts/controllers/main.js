@@ -27,7 +27,11 @@ angular.module('wheresmytaxiApp')
                 });
                 map.data.addGeoJson(response);
                 var ctaLayer = new google.maps.KmlLayer({
-                    url: 'https://www.dropbox.com/s/svszn361sq0cn5g/speed_camera_spf.kml?dl=1',
+                    url: 'https://www.dropbox.com/s/6jkj921km8modav/red_light_spf.kml?dl=1',
+                    map: map
+                });
+                var ctaLayer = new google.maps.KmlLayer({
+                    url: 'https://www.dropbox.com/s/3anf271v93gohni/speed_camera_spf.kml?dl=1',
                     map: map
                 });
             })
