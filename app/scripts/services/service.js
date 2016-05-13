@@ -13,19 +13,20 @@ jsonTest.factory('testService', ['$resource', '$http',
             }
         };
         var data={};
-        // var queryDataFunc = function() {
-        //     var dataResource = $resource('json/abc.json', {}, {
-        //         'query': {
-        //             method: 'GET',
-        //             isArray: false
-        //         }
-        //     });
-        //     return dataResource;
-        // };
+        var queryKMLDataFunc = function() {
+            var dataResource = $resource('json/abc.kml', {}, {
+                'query': {
+                    method: 'GET',
+                    isArray: false
+                }
+            });
+            return dataResource;
+        };
         var queryDataFunc = function() {
             return $http.get('https://api.data.gov.sg/v1/transport/taxi-availability', config);
         };
         return {
+            queryDataKML:queryKMLDataFunc,
             queryData: queryDataFunc,
             setData: function(incomingData) {
                 data=incomingData;

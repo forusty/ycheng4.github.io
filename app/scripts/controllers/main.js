@@ -11,6 +11,7 @@ angular.module('wheresmytaxiApp')
         var map = '';
         var heatmap = '';
         $scope.currentMode = '';
+
         testService.queryData()
             .success(function(response) {
                 console.log(response);
@@ -25,7 +26,12 @@ angular.module('wheresmytaxiApp')
                     },
                     zoom: 11
                 });
-                map.data.addGeoJson(response);
+                // map.data.addGeoJson(response);
+                    // web service successCallback
+                    var ctaLayer = new google.maps.KmlLayer({
+                        url: 'abc.kml',
+                        map: map
+                    });
             })
             .error(function(response, status) {
                 console.log(response);
@@ -48,7 +54,7 @@ angular.module('wheresmytaxiApp')
         $scope.heatMap = function() {
             $scope.currentMode = 'heatmap';
             console.log();
-            if (typeof(heatmap)!=='string') {
+            if (typeof(heatmap) !== 'string') {
                 heatmap.setMap(null);
             }
             map.data.forEach(function(feature) {
@@ -68,7 +74,7 @@ angular.module('wheresmytaxiApp')
         };
         $scope.dataPoint = function() {
             $scope.currentMode = 'datapoint';
-            if (typeof(heatmap)!=='string') {
+            if (typeof(heatmap) !== 'string') {
                 heatmap.setMap(null);
             }
             map.data.forEach(function(feature) {
