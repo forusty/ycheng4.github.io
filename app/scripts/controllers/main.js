@@ -88,7 +88,7 @@ angular.module('wheresmytaxiApp')
         $scope.refresh = function() {
             testService.queryData()
                 .success(function(response) {
-                    testService.setData(response);
+                    // testService.setData(response);
                     console.log(response);
                     if ($scope.currentMode === 'heatmap') {
                         $scope.heatMap();
