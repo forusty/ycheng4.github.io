@@ -9,7 +9,7 @@ jsonTest.factory('testService', ['$resource', '$http',
     function($resource, $http) {
         var config = {
             headers: {
-                'api-key': 'x1EBGabWogDOPfCcEPXj1vp4XeHZ7lLh'
+                'api-key': 'your key here'
             }
         };
         var data={};
